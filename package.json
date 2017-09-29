@@ -1,13 +1,13 @@
 {
   "name": "jsdoc-mermaid",
   "version": "1.0.0",
-  "description": "A tool to automagically create flowcharts and diagrams in your jsdocs",
+  "description": "A tool to automagically create flowcharts and diagrams in your jsdocs.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "doctrine": "^2.0.0"
   }
