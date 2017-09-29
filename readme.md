@@ -4,7 +4,7 @@ A plugin that parses your JSDocs for [Mermaid](https://mermaidjs.github.io/) syn
 
 ## Getting Started
 
-Add mermaid.js to your jsdocs plugins folder and add it to your .jsdocrc
+Add mermaid.js to your jsdocs plugins folder and add it to your configuration file.
 
 ```javascript
 {
