@@ -4,13 +4,46 @@ A plugin that parses your JSDocs for [Mermaid](https://mermaidjs.github.io/) syn
 
 ## Getting Started
 
-Add mermaid.js to your jsdocs plugins folder and add it to your configuration file.
+Add jsdoc-mermaid to your jsdoc configuration file. That's it!
 
 ```javascript
 {
-    "plugins": ["plugins/mermaid"]
+    "plugins": ["jsdoc-mermaid"]
 }
 ```
+
+## Usage
+
+Document a method with an `@mermaid` tag using JSDoc Syntax, like so:
+
+```javascript
+/**
+ * Represents a book.
+ * @constructor
+ * @param {string} title - The title of the book.
+ * @param {string} author - The author of the book.
+ *
+ * @graphviz
+ *   graph TD;
+ *     A-->B;
+ *     A-->C;
+ *     B-->D;
+ *     C-->D;
+ */
+function Book(title, author) {
+  /* ... */
+}
+```
+
+Generate your JSDocs using the [configuration](http://usejsdoc.org/about-configuring-jsdoc.html) you've specified - for instance:
+```bash
+jsdoc book.js -c conf.json 
+```
+
+When you open that page in JSDoc, you should have a shiny new graph!
+
+![jsdoc-mermaid example](https://user-images.githubusercontent.com/2096353/31104126-b9159786-a7a0-11e7-95ed-689a7f158803.png)
+
 
 ## Built With
 
