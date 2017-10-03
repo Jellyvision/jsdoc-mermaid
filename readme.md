@@ -23,7 +23,7 @@ Document a method with an `@mermaid` tag using JSDoc Syntax, like so:
  * @param {string} title - The title of the book.
  * @param {string} author - The author of the book.
  *
- * @graphviz
+ * @mermaid
  *   graph TD;
  *     A-->B;
  *     A-->C;
