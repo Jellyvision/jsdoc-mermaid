@@ -4,7 +4,12 @@ A plugin that parses your JSDocs for [Mermaid](https://mermaidjs.github.io/) syn
 
 ## Getting Started
 
-Add jsdoc-mermaid to your jsdoc configuration file. That's it!
+```bash
+# install as a local dependency
+yarn add -D jsdoc-mermaid # OR npm install -D jsdoc-mermaid
+```
+
+And then add `jsdoc-mermaid` to your jsdoc configuration file. That's it!
 
 ```javascript
 {

@@ -1,12 +1,31 @@
-const doctrine = require('doctrine');
+const doctrine = require('doctrine')
+
+const escapeHtmlChar = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;'
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>"']/g, c => escapeHtmlChar[c])
+}
+
+let isAddedMermaid = {}
 
 exports.handlers = {
-  newDoclet: function(e) {
-    let mermaidComment = doctrine.parse([e.doclet.comment].join('\n'), { unwrap: true, tags: ['mermaid'], recoverable: true }).tags;
-    e.doclet.description = e.doclet.description || '';
-    e.doclet.description = '<script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>' + e.doclet.description;
-    for (let i = 0; i < mermaidComment.length; i++) {
-      e.doclet.description += '<div class="mermaid">' + mermaidComment[i].description + '</div>'
+  newDoclet: function (e) {
+    if (!e.doclet.comment || !/@mermaid\b/.test(e.doclet.comment)) return
+    let tags = doctrine.parse(e.doclet.comment, { unwrap: true, tags: ['mermaid'], recoverable: true }).tags
+    let htmls = tags.map(tag => '<div class="mermaid">' + escapeHtml(tag.description) + '</div>')
+    if (htmls) {
+      e.doclet.description = e.doclet.description || ''
+      if (!isAddedMermaid[e.doclet.memberof]) {
+        e.doclet.description += '<script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>'
+        isAddedMermaid[e.doclet.memberof] = true
+      }
+      e.doclet.description += htmls.join('')
     }
   }
-};
+}
