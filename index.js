@@ -22,7 +22,7 @@ exports.handlers = {
     if (htmls) {
       e.doclet.description = e.doclet.description || ''
       if (!isAddedMermaid[e.doclet.memberof]) {
-        e.doclet.description += '<script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>'
+        e.doclet.description += '<script src="https://unpkg.com/mermaid@8.3.0/dist/mermaid.min.js"></script>'
         isAddedMermaid[e.doclet.memberof] = true
       }
       e.doclet.description += htmls.join('')
