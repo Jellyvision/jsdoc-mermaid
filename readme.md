@@ -2,38 +2,6 @@
 
 A plugin that parses your JSDocs for [Mermaid](https://mermaidjs.github.io/) syntax and renders the diagrams and flowcharts described.
 
-## Custom changes on this branch
-
-This branch was forked from the original [Jellyvision](https://github.com/Jellyvision/jsdoc-mermaid) implementation to add the ability to pass options to Mermaid from the JSDoc configuration file (typically ```conf.json```).  This let's you add a ```mermaid``` section and provide any Mermaid options you want.  
-
-## Documentation on Mermaid
-
-* [Mermaid API](https://mermaid-js.github.io/mermaid/#/mermaidAPI), however the properties are often incorrect
-* [Mermaid configuration defaults](https://mermaid-js.github.io/mermaid/#/mermaidAPI?id=mermaidapi-configuration-defaults) shows the defaults, and appears to be more accurate
-* [Source code for the API](https://github.com/mermaid-js/mermaid/blob/master/src/mermaidAPI.js) which is harder to parse but the most accurate
-
-This package also some new properties to the mermaid configuration:
-
-* ```version```: Let's you specify which Mermaid version to use.  If not provided, defaults to latest Mermaid.
-* ```style```: Let's you add optional CSS styles to the surrounding ```<div>``` tag (which also has class ```mermaid``` if you want to use a proper stylesheet).
-
-For example:
-
-```json
-{
-  "mermaid": {
-    "theme": "nuetral",
-    "style": "display: flex",
-    "version": "8.3.0",
-    "flowchart": {
-      "curve": "cardinal",
-      "htmlLabels": false
-    }
-  }
-}
-```
-
-
 ## Getting Started
 
 ```bash
@@ -80,6 +48,43 @@ jsdoc book.js -c conf.json
 When you open that page in JSDoc, you should have a shiny new graph!
 
 ![jsdoc-mermaid example](https://user-images.githubusercontent.com/2096353/31104126-b9159786-a7a0-11e7-95ed-689a7f158803.png)
+
+## Customizing Mermaid
+
+You can optionally include a section in your JSDoc configuration file (such as ```conf.json```) to define Mermaid custom configurations.  Simply add a section called ```"mermaid"```:
+
+```json
+{
+  "mermaid": {
+    "theme": "forest"
+  }
+}
+```
+
+This package also some new properties to the mermaid configuration:
+
+* ```version```: Let's you specify which Mermaid version to use.  If not provided, defaults to latest Mermaid.
+* ```style```: Let's you add optional CSS styles to the surrounding ```<div>``` tag (which also has class ```mermaid``` if you want to use a proper stylesheet).
+
+```json
+{
+  "mermaid": {
+    "theme": "nuetral",
+    "style": "display: flex",
+    "version": "8.3.0",
+    "flowchart": {
+      "curve": "cardinal",
+      "htmlLabels": false
+    }
+  }
+}
+```
+
+### Mermaid configuration documentation
+
+* [Mermaid API](https://mermaid-js.github.io/mermaid/#/mermaidAPI), however the properties are often incorrect
+* [Mermaid configuration defaults](https://mermaid-js.github.io/mermaid/#/mermaidAPI?id=mermaidapi-configuration-defaults) shows the defaults, and appears to be more accurate
+* [Source code for the API](https://github.com/mermaid-js/mermaid/blob/master/src/mermaidAPI.js) which is harder to parse but the most accurate
 
 
 ## Built With
