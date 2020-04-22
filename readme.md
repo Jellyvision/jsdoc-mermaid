@@ -4,19 +4,30 @@ A plugin that parses your JSDocs for [Mermaid](https://mermaidjs.github.io/) syn
 
 ## Custom changes on this branch
 
-This branch was forked from the original [Jellyvision](https://github.com/Jellyvision/jsdoc-mermaid) implementation to add the ability to pass options to Mermaid from the JSDoc configuration file (typically ```conf.json```).  This let's you add a ```mermaid``` section and provide any Mermaid options you want.  See [Mermaid API](https://mermaid-js.github.io/mermaid/#/mermaidAPI) and also the [code that implements the defaults](https://github.com/mermaid-js/mermaid/blob/master/src/mermaidAPI.js) (which helps to see all options as the documentation isn't fully up to date).
+This branch was forked from the original [Jellyvision](https://github.com/Jellyvision/jsdoc-mermaid) implementation to add the ability to pass options to Mermaid from the JSDoc configuration file (typically ```conf.json```).  This let's you add a ```mermaid``` section and provide any Mermaid options you want.  
 
-It also adds a new property ```version``` where you can specify the Mermaid version to use.  Otherwise it defaults to latest.
+## Documentation on Mermaid
+
+* [Mermaid API](https://mermaid-js.github.io/mermaid/#/mermaidAPI), however the properties are often incorrect
+* [Mermaid configuration defaults](https://mermaid-js.github.io/mermaid/#/mermaidAPI?id=mermaidapi-configuration-defaults) shows the defaults, and appears to be more accurate
+* [Source code for the API](https://github.com/mermaid-js/mermaid/blob/master/src/mermaidAPI.js) which is harder to parse but the most accurate
+
+This package also some new properties to the mermaid configuration:
+
+* ```version```: Let's you specify which Mermaid version to use.  If not provided, defaults to latest Mermaid.
+* ```style```: Let's you add optional CSS styles to the surrounding ```<div>``` tag (which also has class ```mermaid``` if you want to use a proper stylesheet).
 
 For example:
 
 ```json
 {
   "mermaid": {
-    "theme": "forest",
+    "theme": "nuetral",
+    "style": "display: flex",
     "version": "8.3.0",
     "flowchart": {
-      "curve": "cardinal"
+      "curve": "cardinal",
+      "htmlLabels": false
     }
   }
 }
