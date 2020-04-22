@@ -22,14 +22,14 @@ exports.handlers = {
   newDoclet: function (e) {
     if (!e.doclet.comment || !/@mermaid\b/.test(e.doclet.comment)) return
     let tags = doctrine.parse(e.doclet.comment, { unwrap: true, tags: ['mermaid'], recoverable: true }).tags
-    var style = config.style ? ' style="' + config.style + '"' : ''
+    let style = config.style ? ' style="' + config.style + '"' : ''
     let htmls = tags.map(tag => '<div class="mermaid"' + style + '>' + escapeHtml(tag.description) + '</div>')
 
     if (htmls) {
       e.doclet.description = e.doclet.description || ''
       if (!isAddedMermaid[e.doclet.memberof]) {
-        var version = config.version ? '@' + config.version : ''
-        var altConfig = {...config}
+        let version = config.version ? '@' + config.version : ''
+        let altConfig = {...config}
         delete altConfig.version
         delete altConfig.style
         e.doclet.description += 

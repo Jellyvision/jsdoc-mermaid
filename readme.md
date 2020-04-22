@@ -61,7 +61,7 @@ You can optionally include a section in your JSDoc configuration file (such as `
 }
 ```
 
-This package also some new properties to the mermaid configuration:
+This package also supports some new properties to the mermaid configuration:
 
 * ```version```: Let's you specify which Mermaid version to use.  If not provided, defaults to latest Mermaid.
 * ```style```: Let's you add optional CSS styles to the surrounding ```<div>``` tag (which also has class ```mermaid``` if you want to use a proper stylesheet).
