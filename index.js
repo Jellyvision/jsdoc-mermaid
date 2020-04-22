@@ -1,5 +1,9 @@
 const doctrine = require('doctrine')
 
+// get access to configuration options
+const env = require('jsdoc/env');
+const config = env.conf.mermaid || {};
+
 const escapeHtmlChar = {
   '&': '&amp;',
   '<': '&lt;',
@@ -22,18 +26,10 @@ exports.handlers = {
     if (htmls) {
       e.doclet.description = e.doclet.description || ''
       if (!isAddedMermaid[e.doclet.memberof]) {
-        e.doclet.description += '<script src="https://unpkg.com/mermaid@8.5.0/dist/mermaid.min.js"></script>\n' +
-          '<script>\n' +
-          'var config = {\n' +
-          '  startOnLoad:true,\n' +
-          '  flowchart:{\n' +
-          '    useMaxWidth:false,\n' +
-          '    htmlLabels:true\n' +
-          '  }\n' +
-          '};\n' +
-          'console.log("initializing mermaid...");\n' +
-          'mermaid.initialize(config);\n' +
-          '</script>'
+        var version = config.version ? '@' + config.version : ''
+        delete config.version
+        e.doclet.description += '<script src="https://unpkg.com/mermaid' + version + '/dist/mermaid.min.js"></script>\n' +
+          '<script>mermaid.initialize(' + JSON.stringify(config) + ');</script>\n'
         isAddedMermaid[e.doclet.memberof] = true
       }
       e.doclet.description += htmls.join('')

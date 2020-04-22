@@ -2,6 +2,27 @@
 
 A plugin that parses your JSDocs for [Mermaid](https://mermaidjs.github.io/) syntax and renders the diagrams and flowcharts described.
 
+## Custom changes on this branch
+
+This branch was forked from the original [Jellyvision](https://github.com/Jellyvision/jsdoc-mermaid) implementation to add the ability to pass options to Mermaid from the JSDoc configuration file (typically ```conf.json```).  This let's you add a ```mermaid``` section and provide any Mermaid options you want.  See [Mermaid API](https://mermaid-js.github.io/mermaid/#/mermaidAPI) and also the [code that implements the defaults](https://github.com/mermaid-js/mermaid/blob/master/src/mermaidAPI.js) (which helps to see all options as the documentation isn't fully up to date).
+
+It also adds a new property ```version``` where you can specify the Mermaid version to use.  Otherwise it defaults to latest.
+
+For example:
+
+```json
+{
+  "mermaid": {
+    "theme": "forest",
+    "version": "8.3.0",
+    "flowchart": {
+      "curve": "cardinal"
+    }
+  }
+}
+```
+
+
 ## Getting Started
 
 ```bash
@@ -11,7 +32,7 @@ yarn add -D jsdoc-mermaid # OR npm install -D jsdoc-mermaid
 
 And then add `jsdoc-mermaid` to your jsdoc configuration file. That's it!
 
-```javascript
+```json
 {
     "plugins": ["jsdoc-mermaid"]
 }
