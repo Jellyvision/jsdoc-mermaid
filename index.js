@@ -66,7 +66,7 @@ exports.handlers = {
       if (htmls) {
         e.doclet.description = e.doclet.description || ''
 
-        if (!isAddedMermaid[e.doclet.memberof]) {
+        if (!isAddedMermaid[e.doclet.memberof] && !MERMAID_CONFIG.disableScript) {
           let version = MERMAID_CONFIG.version ? '@' + MERMAID_CONFIG.version : ''
 
           // clone the Mermaid config so we can remove our unique options before rendering via JSON.stringify
