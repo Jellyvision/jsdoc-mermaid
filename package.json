@@ -1,6 +1,6 @@
 {
   "name": "jsdoc-mermaid",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A tool to automagically create flowcharts and diagrams in your jsdocs.",
   "main": "index.js",
   "scripts": {
